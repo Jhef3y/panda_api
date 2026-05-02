@@ -1,5 +1,7 @@
 import { prisma, TransactionType, TransactionStatus } from '../lib/prisma';
-import type { Transaction } from '../lib/prisma';
+import type { Transaction, User } from '../lib/prisma';
+
+type TransactionWithUser = Transaction & { user: Pick<User, 'wallet_address'> };
 
 export interface CreateTransactionDTO {
   user_id: string;
@@ -61,22 +63,23 @@ export class TransactionRepository {
       }),
     ]);
 
-    const outgoingMapped: StatementEntry[] = outgoing.map(({ user, ...t }) => ({
+    const outgoingMapped: StatementEntry[] = (outgoing as TransactionWithUser[]).map(({ user, ...t }) => ({
       ...t,
       direction: 'SAIDA' as const,
       sender_address: user.wallet_address,
     }));
 
-    const incomingMapped: StatementEntry[] = incoming
-      .filter((t) => t.user_id !== userId) // evita duplicatas se o usuário transferiu para si mesmo
-      .map(({ user, ...t }) => ({
+    const incomingMapped: StatementEntry[] = (incoming as TransactionWithUser[])
+      .filter((t: TransactionWithUser) => t.user_id !== userId)
+      .map(({ user, ...t }: TransactionWithUser) => ({
         ...t,
         direction: 'ENTRADA' as const,
         sender_address: user.wallet_address,
       }));
 
     return [...outgoingMapped, ...incomingMapped].sort(
-      (a, b) => b.created_at.getTime() - a.created_at.getTime(),
+      (a: StatementEntry, b: StatementEntry) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
     );
   }
 }
