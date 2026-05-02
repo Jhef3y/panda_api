@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efe4b69e-0abd-40b4-9fec-de59318a787d" name="Changes" comment="">
+    <list default="true" id="efe4b69e-0abd-40b4-9fec-de59318a787d" name="Changes" comment="fix deploy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/transaction.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/transaction.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/price.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/price.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,12 +148,25 @@
       <workItem from="1777708090032" duration="1894000" />
       <workItem from="1777711405271" duration="337000" />
       <workItem from="1777711746807" duration="51000" />
-      <workItem from="1777711818903" duration="3889000" />
+      <workItem from="1777711818903" duration="4966000" />
     </task>
+    <task id="LOCAL-00001" summary="fix deploy">
+      <option name="closed" value="true" />
+      <created>1777718968502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1777718968502</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix deploy" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
